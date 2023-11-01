@@ -16,7 +16,6 @@
 //}
 
 
-
 function CookieStand(city, min, max, avgCookies) {
     this.city = city;
     this.min = min;
@@ -38,6 +37,7 @@ function CookieStand(city, min, max, avgCookies) {
 // INTO
 
 // const seattle = new CookieStand('Seattle', 23, 65, 6.3, []);
+// Remember to use that keyword "new" because it is what allows "this." to refer to the currently created object
 
 //But before adding that line of code I first need to add a method for this.generateEstimate and the method needs to go in the prototype
 //The method needs to be bound to a given object
@@ -45,7 +45,33 @@ function CookieStand(city, min, max, avgCookies) {
 CookieStand.prototype.generateEstimate = function(){
     return [];    
 }
-//The array in the array line needs to be filled in above
+//The array in the array line still needs to be filled in above
+
+//We also need to add a method to render the data
+//The following gives the browser the instructions of what should be done once we call on the render method further below
+CookieStand.prototype.render = function(){
+
+    //get the div "container" for SalesData
+    const containerElem = document.getElementById('SalesData');
+
+    //each city's data is an article
+    const articleElem = document.createElement('article');
+    containerElem.appendChild(articleElem);
+
+    //add the article heading
+    const paraElem = document.createElement('h2');
+    articleElem.appendChild(headingElem);
+    headingElem.textContent = this.city;
+
+    //add the paragraph lines
+    //?????????
+
+    //add the unordered list
+    //?????????
+}
+
+
+
 const seattle = new CookieStand('Seattle', 23, 65, 6.3, []);
 
 // Oops!  It sounds like the whole point of using a constructor function was that I should have just written
@@ -109,7 +135,11 @@ const lima = new CookieStand('Lima', 2, 16, 4.6, []);
 
 
 
-
+seattle.render();
+tokyo.render();
+dubai.render();
+paris.render();
+lima.render();
 
 
 
