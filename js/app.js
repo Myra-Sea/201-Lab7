@@ -56,27 +56,32 @@ CookieStand.prototype.render = function(){
 
     //each city's data is an article
     const articleElem = document.createElement('article');
+    //append it to the container element
     containerElem.appendChild(articleElem);
 
     //add the article heading
     const headingElem = document.createElement('h2');
+    //append it to the <article> element
     articleElem.appendChild(headingElem);
     headingElem.textContent = this.city;
 
-    //add the paragraph lines
+    //add paragraph lines
     //?????????
 
-    //add the unordered list
+    //add an unordered list
     //?????????
 
     //add the table here
     const tableElem = document.createElement('table');
+    //append it to the <article> element
     articleElem.appendChild(tableElem);
 
     const headerRow = document.createElement('tr');
+    //append it to the <table> element
     tableElem.appendChild(headerRow);
 
     constlocationsHeaderCell = document.createElement('th');
+    //append it to the header row in the table
     headerRow.appendChild(locationsHeaderCell);
     locationsHeaderCell.textContent = "Locations";
 
@@ -140,6 +145,14 @@ CookieStand.prototype.render = function(){
     headerRow.appendChild(locationTotalsHeaderCell);
     locationTotalsHeaderCell.textContent = "Location Totals";
     
+
+// add a data row
+    const dataRow = document.createElement('tr');
+// append it to the <table> element
+    tableElem.appendChild(dataRow);
+
+
+
 }
 
 
