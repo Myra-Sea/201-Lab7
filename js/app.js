@@ -43,9 +43,9 @@ function CookieStand(city, min, max, avgCookies) {
 //The method needs to be bound to a given object
 
 CookieStand.prototype.generateEstimate = function(){
-    return [];    
+    return randomInRange(20, 38) + 'cookies';    
 }
-//The array in the array line still needs to be filled in above
+//I'm not sure if that line above was writen correctly. It may needd to be written differently
 
 //We also need to add a method to render the data
 //The following gives the browser the instructions of what should be done once we call on the render method further below
@@ -59,7 +59,7 @@ CookieStand.prototype.render = function(){
     containerElem.appendChild(articleElem);
 
     //add the article heading
-    const paraElem = document.createElement('h2');
+    const headingElem = document.createElement('h2');
     articleElem.appendChild(headingElem);
     headingElem.textContent = this.city;
 
@@ -68,8 +68,91 @@ CookieStand.prototype.render = function(){
 
     //add the unordered list
     //?????????
+
+    //add the table here
+    const tableElem = document.createElement('table');
+    articleElem.appendChild(tableElem);
+
+    const headerRow = document.createElement('tr');
+    tableElem.appendChild(headerRow);
+
+    constlocationsHeaderCell = document.createElement('th');
+    headerRow.appendChild(locationsHeaderCell);
+    locationsHeaderCell.textContent = "Locations";
+
+    constsixAmHeaderCell = document.createElement('th');
+    headerRow.appendChild(sixAmHeaderCell);
+    sixAmHeaderCell.textContent = "6am";
+
+    constsevenAmHeaderCell = document.createElement('th');
+    headerRow.appendChild(sevenAmHeaderCell);
+    sevenAmHeaderCell.textContent = "7am";
+
+    consteightAmHeaderCell = document.createElement('th');
+    headerRow.appendChild(eightAmHeaderCell);
+    eightAmHeaderCell.textContent = "8am";
+
+    constnineAmHeaderCell = document.createElement('th');
+    headerRow.appendChild(nineAmHeaderCell);
+    nineAmHeaderCell.textContent = "9am";
+
+    consttenAmHeaderCell = document.createElement('th');
+    headerRow.appendChild(tenAmHeaderCell);
+    tenAmHeaderCell.textContent = "10am";
+
+    constelevenAmHeaderCell = document.createElement('th');
+    headerRow.appendChild(elevenAmHeaderCell);
+    elevenAmHeaderCell.textContent = "11am";
+
+    constnoonHeaderCell = document.createElement('th');
+    headerRow.appendChild(noonHeaderCell);
+    noonHeaderCell.textContent = "noon";
+
+    constonePmHeaderCell = document.createElement('th');
+    headerRow.appendChild(onePmHeaderCell);
+    onePmHeaderCell.textContent = "1pm";
+
+    consttwoPmHeaderCell = document.createElement('th');
+    headerRow.appendChild(twoPmHeaderCell);
+    twoPmHeaderCell.textContent = "2pm";
+
+    constthreePmHeaderCell = document.createElement('th');
+    headerRow.appendChild(threePmHeaderCell);
+    threePmHeaderCell.textContent = "3pm";
+
+    constfourPmHeaderCell = document.createElement('th');
+    headerRow.appendChild(fourPmHeaderCell);
+    fourPmHeaderCell.textContent = "4pm";
+
+    constfivePmHeaderCell = document.createElement('th');
+    headerRow.appendChild(fivePmHeaderCell);
+    fivePmHeaderCell.textContent = "5pm";
+
+    constsixPmHeaderCell = document.createElement('th');
+    headerRow.appendChild(sixPmHeaderCell);
+    sixPmHeaderCell.textContent = "6pm";
+
+    constsevenPmHeaderCell = document.createElement('th');
+    headerRow.appendChild(sevenPmHeaderCell);
+    sevenPmHeaderCell.textContent = "7pm";
+
+    constlocationTotalsHeaderCell = document.createElement('th');
+    headerRow.appendChild(locationTotalsHeaderCell);
+    locationTotalsHeaderCell.textContent = "Location Totals";
+    
 }
 
+
+//Constructed objects can still use standalone functions when needed.
+function randomInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+
+//Constructor functions can still use standalone function when needed.
+function randomInRange(min,max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 
 const seattle = new CookieStand('Seattle', 23, 65, 6.3, []);
@@ -141,21 +224,3 @@ dubai.render();
 paris.render();
 lima.render();
 
-
-
-{
-
-    //add the table here
-    const table = document.createElement('table');
-    articleElem.appendChild(tableElem);
-
-    const headerRow = document.createElement('tr');
-    tableElem.appendChild(headerRow);
-
-    
-}
-
-//Constructed objects can still use standalone functions when needed.
-function randomInRange(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
