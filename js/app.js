@@ -17,12 +17,12 @@
 
 
 
-function SeattleCookieStand(city, min, max, avgCookies) {
+function CookieStand(city, min, max, avgCookies) {
     this.city = city;
     this.min = min;
     this.max = max;
     this.avgCookies = avgCookies;
-    this.sales = this.estimate();
+    this.sales = this.generateEstimate();
 }
 
 // THE ABOVE ALLOWS THE CONVERSION OF
@@ -37,54 +37,80 @@ function SeattleCookieStand(city, min, max, avgCookies) {
 
 // INTO
 
-const seattle = new SeattleCookieStand('Seattle', 23, 65, 6.3, []);
+// const seattle = new CookieStand('Seattle', 23, 65, 6.3, []);
 
-//The method needs to go in the prototype
+//But before adding that line of code I first need to add a method for this.generateEstimate and the method needs to go in the prototype
+//The method needs to be bound to a given object
 
-SeattleCookieStand.prototype.estimate = function(){
+CookieStand.prototype.generateEstimate = function(){
     return [];    
 }
 //The array in the array line needs to be filled in above
- 
+const seattle = new CookieStand('Seattle', 23, 65, 6.3, []);
 
-function TokyoCookieStand(city, min, max, avgCookies) {
-    this.city = city;
-    this.min = min;
-    this.max = max;
-    this.avgCookies = avgCookies;
-    this.sales = this.estimate();
-}
-const tokyo = new TokyoCookieStand('Tokyo', 3, 24, 1.2, []);
+// Oops!  It sounds like the whole point of using a constructor function was that I should have just written
+const tokyo = new CookieStand('Tokyo', 3, 24, 1.2, []);
+const dubai = new CookieStand('Dubai', 11, 38, 3.7, []);
+const paris = new CookieStand('Paris', 20, 38, 2.3, []);
+const lima = new CookieStand('Lima', 2, 16, 4.6, []);
 
-
-function DubaiCookieStand(city, min, max, avgCookies) {
-    this.city = city;
-    this.min = min;
-    this.max = max;
-    this.avgCookies = avgCookies;
-    this.sales = this.estimate();
-}
-const dubai = new DubaiCookieStand('Dubai', 11, 38, 3.7, []);
-
-
-function ParisCookieStand(city, min, max, avgCookies) {
-    this.city = city;
-    this.min = min;
-    this.max = max;
-    this.avgCookies = avgCookies;
-    this.sales = this.estimate();
-}
-const paris = new ParisCookieStand('Paris', 20, 38, 2.3, []);
+//INSTEAD OF WRITING OUT ALL OF THIS:
+//
+// function TokyoCookieStand(city, min, max, avgCookies) {
+//     this.city = city;
+//     this.min = min;
+//     this.max = max;
+//     this.avgCookies = avgCookies;
+//     this.sales = this.generateEstimate();
+// }
+// TokyoCookieStand.prototype.generateEstimate = function(){
+//     return [];    
+// }
+// const tokyo = new TokyoCookieStand('Tokyo', 3, 24, 1.2, []);
 
 
-function LimaCookieStand(city, min, max, avgCookies,){
-    this.city = city;
-    this.min = min;
-    this.max = max;
-    this.avgCookies = avgCookies;
-    this.sales = this.estimate();
-}
-const lima = new LimaCookieStand('Lima', 2, 16, 4.6, []);
+// function DubaiCookieStand(city, min, max, avgCookies) {
+//     this.city = city;
+//     this.min = min;
+//     this.max = max;
+//     this.avgCookies = avgCookies;
+//     this.sales = this.generateEstimate();
+// }
+// DubaiCookieStand.prototype.generateEstimate = function(){
+//     return [];    
+// }
+// const dubai = new DubaiCookieStand('Dubai', 11, 38, 3.7, []);
+
+
+// function ParisCookieStand(city, min, max, avgCookies) {
+//     this.city = city;
+//     this.min = min;
+//     this.max = max;
+//     this.avgCookies = avgCookies;
+//     this.sales = this.generateEstimate();
+// }
+// ParisCookieStand.prototype.generateEstimate = function(){
+//     return [];    
+// }
+// const paris = new ParisCookieStand('Paris', 20, 38, 2.3, []);
+
+
+// function LimaCookieStand(city, min, max, avgCookies,){
+//     this.city = city;
+//     this.min = min;
+//     this.max = max;
+//     this.avgCookies = avgCookies;
+//     this.sales = this.generateEstimate();
+// }
+// LimaCookieStand.prototype.generateEstimate = function(){
+//     return [];    
+// }
+// const lima = new LimaCookieStand('Lima', 2, 16, 4.6, []);
+
+
+
+
+
 
 
 {
