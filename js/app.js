@@ -1,3 +1,8 @@
+const timeSlot = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
+//const is used instead of let because the timeSlot column is only ever mean to equal this array
+
+
+
 //Every cookie stand object has a 
 //city: 'string',
 //min: number,
@@ -21,6 +26,8 @@ function CookieStand(city, min, max, avgCookies) {
     this.min = min;
     this.max = max;
     this.avgCookies = avgCookies;
+    this.custEachHour = [];
+    this.cookiesEachHour = [];    
     this.sales = this.generateEstimate();
 }
 
@@ -43,9 +50,26 @@ function CookieStand(city, min, max, avgCookies) {
 //The method needs to be bound to a given object
 
 CookieStand.prototype.generateEstimate = function(){
-    return randomInRange(20, 38) + 'cookies';    
+    //generate random customers per hour
+    for(let i=0; i<hours.length; i++) {
+        const numberCustomers = randomInRange(this.min, this.max);
+        //push the random number of customers into the custEachHour array
+        this.custEachHour.push(numberCustomers);
+    }
+
+    //generate random cookies per hour
+    //Somehow I need to multiply my this.avgCookies * this.custEachHour
+    for(let i=0; i<hours.length; i++) {
+        const randCookieNumber = Math.ceil(this.custEachHour * this.avgCookies);
+        //push the random number of cookies into the cookiesEachHour array
+        this.cookiesEachHour.push(randCookieNumber);
+    }
+    //But I'm not sure this.min, this.max is correct, because that's for the number of customers NOT the number of cookies!
+    console.log(numberCustomers);
+    console.log(randCookieNumber);
+    return randomInRange(this.min, this.max) + 'cookies';    
 }
-//I'm not sure if that line above was writen correctly. It may needd to be written differently
+
 
 //We also need to add a method to render the data
 //The following gives the browser the instructions of what should be done once we call on the render method further below
@@ -84,6 +108,16 @@ CookieStand.prototype.render = function(){
     //append it to the header row in the table
     headerRow.appendChild(locationsHeaderCell);
     locationsHeaderCell.textContent = "Locations";
+
+//Could have used a function FOR loop below
+//I also have an hours array in the code that could have been used
+//for (let i = 0; i<hours.length; i++);{
+//    const currentHour = hours[0];
+//Why does the lab review have an i instead of a zero there???
+//    const currentHeaderCell = document.createElement('th');
+//    headerRow.appendChild(locationsHeaderCell);
+//    currentHeaderCell.textContent = currentHour;
+// }
 
     constsixAmHeaderCell = document.createElement('th');
     headerRow.appendChild(sixAmHeaderCell);
@@ -162,19 +196,14 @@ function randomInRange(min, max) {
 }
 
 
-//Constructor functions can still use standalone function when needed.
-function randomInRange(min,max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
 
-
-const seattle = new CookieStand('Seattle', 23, 65, 6.3, []);
-
+const seattle = new CookieStand('Seattle', 23, 65, 6.3);
+console.log(seattle)
 // Oops!  It sounds like the whole point of using a constructor function was that I should have just written
-const tokyo = new CookieStand('Tokyo', 3, 24, 1.2, []);
-const dubai = new CookieStand('Dubai', 11, 38, 3.7, []);
-const paris = new CookieStand('Paris', 20, 38, 2.3, []);
-const lima = new CookieStand('Lima', 2, 16, 4.6, []);
+const tokyo = new CookieStand('Tokyo', 3, 24, 1.2);
+const dubai = new CookieStand('Dubai', 11, 38, 3.7);
+const paris = new CookieStand('Paris', 20, 38, 2.3);
+const lima = new CookieStand('Lima', 2, 16, 4.6);
 
 //INSTEAD OF WRITING OUT ALL OF THIS:
 //
