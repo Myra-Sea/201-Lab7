@@ -64,10 +64,10 @@ CookieStand.prototype.generateEstimate = function(){
         //push the random number of cookies into the cookiesEachHour array
         this.cookiesEachHour.push(randCookieNumber);
     }
-    //But I'm not sure this.min, this.max is correct, because that's for the number of customers NOT the number of cookies!
+    //I'm not sure what the math.ceil does
     console.log(numberCustomers);
     console.log(randCookieNumber);
-    return randomInRange(this.min, this.max) + 'cookies';    
+    return this.cookiesEachHour;    
 }
 
 
